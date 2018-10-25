@@ -16,7 +16,6 @@ class Docente :
         return self.ciudad
     #Presentación
     def presentar_datos (self):
-        print("Docente")
         cadena = "%s\n\t%s" %(self.obtener_nombre() , self.obtener_ciudad())
         return cadena
 #Creación de clase estudiante
@@ -34,11 +33,15 @@ class Estudiante:
     def agregar_listaDocentes(self, listaDocentes):
         self.docente = listaDocentes
     def obtener_listaDocentes(self):
-        return self.listaDocentes
-    #Presentación
+        return self.docente
+
+    #Método de presentación de datos
     def presentar_datos(self):
         cadena = "Estudiante: %s\n" % (self.obtener_nombre())
-        cadena = "%s %s\n" % (cadena,"lista_docentes")
-        for x in range(0, len(self.docente)):
-            cadena = "%s\n\t-%s|%s" %(cadena, self.docente[x].obtener_nombre(), self.docente[x].obtener_ciudad())
+        #Variable que concatena el encabezado
+        cadena = "%s%s\n" % (cadena,"Lista de docentes")
+        #Ciclo for para recorrer la lista de docentes
+        for i in self.obtener_listaDocentes():
+            #Variable cadena con concatenación del encabezado y la presentación con los docentes
+            cadena = "%s\n%s" %(cadena, i.presentar_datos())
         return cadena
